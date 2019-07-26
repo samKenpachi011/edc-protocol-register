@@ -26,7 +26,7 @@ INDEX_PAGE = 'td.bhp.org.bw:8000'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: kpeep the secret key used in production secret!
 SECRET_KEY = 'vfk&ge5=5+=e0d!gctt1m+oux09whc)bn^3$%@$bm5^ld8an8o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
