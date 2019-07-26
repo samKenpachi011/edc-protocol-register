@@ -9,7 +9,6 @@ status_list=(
     ('R', 'Rejected')
 )
 
-
 class ProtocolResponse(models.Model):
 
     protocolrequest = models.OneToOneField(

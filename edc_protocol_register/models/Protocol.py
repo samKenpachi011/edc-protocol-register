@@ -1,9 +1,9 @@
 from django.db import models
 from .ProtocolResponse import ProtocolResponse
-from .ProtocolRequest import ProtocolRequest
+from .import ProtocolRequest
 from django.db.models.signals import post_save
 from ..email import send_email
-from  ..validators import *
+from ..validators import *
 
 
 class Protocol(models.Model):
