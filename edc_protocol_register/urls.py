@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls.conf import path, include
 
-from .views import HomeView, AdministrationView
+from .views import HomeView, AdministrationView,RequestView
 
+
+app_name = "protocol"
 urlpatterns = [
     path('accounts/', include('edc_base.auth.urls')),
     path('admin/', include('edc_base.auth.urls')),
@@ -33,4 +35,5 @@ urlpatterns = [
          name='switch_sites_url'),
     path('home/', HomeView.as_view(), name='home_url'),
     path('', HomeView.as_view(), name='home_url'),
+    path('apply/', RequestView.as_view(), name='request_url'),
 ]

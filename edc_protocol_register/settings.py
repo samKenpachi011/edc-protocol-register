@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'edc_device.apps.AppConfig',
     'edc_protocol_register.apps.EdcBaseAppConfig',
     'edc_protocol_register.apps.AppConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
