@@ -27,7 +27,7 @@ def validate_protocol_request_date(value):
         return value
 
 def validate_duration(value):
-    if value < 0:
+    if value < datetime.date.today():
         raise ValidationError('invalid duration')
     else:
-        return value
+        return str(value)

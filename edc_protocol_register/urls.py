@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls.conf import path, include
 
-from .views import HomeView, AdministrationView, RequestView, RequestListView
+from .views import HomeView, AdministrationView, RequestView, RequestListView,ProtocolRequestDetailView
 
 
 app_name = "protocol"
@@ -36,4 +36,5 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home_url'),
     path('apply/', RequestView.as_view(), name='request_url'),
     path('list/', RequestListView.as_view(), name='request_list'),
+    path('detail/<int:id>', ProtocolRequestDetailView.as_view(), name='request_detail'),
 ]

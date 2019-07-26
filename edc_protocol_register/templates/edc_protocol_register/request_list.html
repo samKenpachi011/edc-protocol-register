@@ -15,6 +15,7 @@
                 {% if i.request.status == "A" %}
                     <tr style="color:green;">
                 {%endif%}
+                <td><a href="{% url 'request_detail' id=i.id %}">{{ i.id }}</a></td>
                 <td>{{i.name}}</td>
                 <td>{{i.email}}</td>
                 <td>{{i.pi_email}}</td>
