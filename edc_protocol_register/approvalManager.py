@@ -70,12 +70,13 @@ class ApproveProtocol:
             messages.success("protocol already approved")
         else:
             try:
+                ProtocolResponse.objects.filter(pk=protocol_response.id).update(status='R')
                 protocol_response.status = "R"
             except ObjectDoesNotExist:
                 ProtocolResponse.objects.create(protocolrequest=protocol_request,
                                                 status="R",
                                                 response_date=datetime.date.today()
                                                 )
-            rejected=True
+            rejected = True
             # send_email(response=True, approved=False, reason)
         return rejected

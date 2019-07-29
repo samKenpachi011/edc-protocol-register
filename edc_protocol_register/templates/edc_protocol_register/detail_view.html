@@ -1,8 +1,55 @@
 {% extends 'edc_protocol_register/base.html' %}
 {% load staticfiles %}
 
-
 {% block main %}
-    <h3>{{request.name}}</h3>
-    <p>{{request.description}}</p>
+   <table class="table">
+       <tr>
+           <th>Protocol name</th>
+           <th>Description</th>
+           <th>email</th>
+           <th>Duration</th>
+           <th>status</th>
+       </tr>
+       <tr>
+           <td>{{ object.name }}</td>
+           <td>{{ object.description }}</td>
+           <td>{{ object.email }}</td>
+           <td>{{ object.duration }}</td>
+           {% if object.request.status == "P" %}
+            <td style="color:orange;"> Pending</td>
+           {% elif object.request.status == "A" %}
+             <td style="color:green;"> Approved</td>
+           {%endif%}
+       </tr>
+   </table>
+    <br><br>
+     {% if object.request.status == "P" %}
+        <form action="{% url 'approve' object.id %}" method="POST" style="display:inline; ">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success" ;>Approve</button>
+        </form>
+
+        <form action="{% url 'reject' object.id %}" method="POST" style="display:inline; padding-left:20px ">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Reject</button>
+        </form>
+
+    {% endif %}
+    {% if object.request.status == "A" %}
+        <p style="color: green">Approved</p>
+    {%endif%}
+
+
+
+
+{% if messages %}
+    <ul class="messages" style="color:green;">
+    {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %} > {{ message }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+
 {% endblock main %}
