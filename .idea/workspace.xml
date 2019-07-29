@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47d46961-4fc7-4d22-b3dc-ed65a65f1040" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/edc_protocol_register/tests/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/edc_protocol_register/views/request_approve.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/edc_protocol_register/views/request_reject.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edc_protocol_register/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/edc_protocol_register/tests/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edc_protocol_register/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/edc_protocol_register/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edc_protocol_register/validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/edc_protocol_register/validators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edc_protocol_register/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/edc_protocol_register/views/__init__.py" afterDir="false" />
-    </list>
+    <list default="true" id="47d46961-4fc7-4d22-b3dc-ed65a65f1040" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/edc_protocol_register/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+            <state relative-caret-position="241">
+              <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
               <folding>
                 <element signature="e#645#677#0" expanded="true" />
               </folding>
@@ -616,8 +607,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/edc_protocol_register/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+        <state relative-caret-position="241">
+          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
           <folding>
             <element signature="e#645#677#0" expanded="true" />
           </folding>
