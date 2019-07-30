@@ -5,19 +5,25 @@
     <style>
         table.row-clickable tbody tr td {
         padding: 0;
-    }
+        }
 
-    table.row-clickable tbody tr td a {
-        display: block;
+        table.row-clickable tbody tr td a {
+            display: block;
 
-        padding: 8px;
-    }
-</style>
+            padding: 8px;
+        }
+        a.details {
+        text-decoration: none;
+        color: inherit;
+         }
+
+    </style>
+
     <table class="table table-hover row-clickable">
         <tr>
-            <th>name</th>
-            <th>description</th>
-            <th>status</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
             <th>pi email</th>
         </tr>
     {% for i in ProtocolRequest %}
@@ -26,10 +32,10 @@
             {% elif i.request.status == "R" %}
                 <tr style="color:red;">
             {%endif%}
-            <td><a href="{% url 'request_detail' id=i.id %}">{{i.name}}</a></td>
-            <td>{{i.snippet}}</td>
-            <td>{{i.request.status}}</td>
-            <td>{{i.pi_email}}</td>
+            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.name}}</a></td>
+            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.snippet}}</a></td>
+            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.request.status}}</a></td>
+            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.pi_email}}</a></td>
             </tr>
     {% endfor %}
     </table>
