@@ -4,25 +4,47 @@
 {% block main %}
     <table class="table">
         <tr>
-            <th>id</th>
-            <th>protocol name</th>
-            <th>email</th>
+            <th>name</th>
+            <th>description</th>
+            <th>status</th>
             <th>pi email</th>
         </tr>
     {% for i in ProtocolRequest %}
-
-            {% if i.request.status != "R" %}
-                {% if i.request.status == "A" %}
-                    <tr style="color:green;">
-                {%endif%}
-                <td><a href="{% url 'request_detail' id=i.id %}">{{ i.id }}</a></td>
-                <td>{{i.name}}</td>
-                <td>{{i.email}}</td>
-                <td>{{i.pi_email}}</td>
-                </tr>
+            {% if i.request.status == "A" %}
+                <tr style="color:green;">
+            {% elif i.request.status == "R" %}
+                <tr style="color:red;">
             {%endif%}
+            <td><a href="{% url 'request_detail' id=i.id %}">{{i.name}}</a></td>
+            <td>{{i.snippet}}</td>
+            <td>{{i.request.status}}</td>
+            <td>{{i.pi_email}}</td>
+            </tr>
     {% endfor %}
     </table>
+
+
+    {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 
 
 {%endblock main%}

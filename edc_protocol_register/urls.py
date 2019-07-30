@@ -17,13 +17,14 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls.conf import path, include
+from rest_framework import routers
 
 from .views import HomeView,\
     AdministrationView,\
     RequestView, RequestListView,ProtocolRequestDetailView,approve_request,reject_request
 
 
-app_name = "protocol"
+
 urlpatterns = [
     path('accounts/', include('edc_base.auth.urls')),
     path('admin/', include('edc_base.auth.urls')),

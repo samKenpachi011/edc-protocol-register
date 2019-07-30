@@ -49,7 +49,7 @@ class ProtocolRequest(models.Model):
         return self.name
 
     def snippet(self):
-        return self.description[:25]
+        return self.description[:20] + " ..."
 
     class Meta:
         ordering = ['-request_date']
