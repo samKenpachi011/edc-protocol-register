@@ -53,4 +53,8 @@ class ProtocolRequest(models.Model):
 
     class Meta:
         ordering = ['-request_date']
+        permissions = [
+            ('can_approve_request', "user can approve request"),
+            ('can_reject_request', "user can reject request")
+        ]
 

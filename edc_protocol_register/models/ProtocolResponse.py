@@ -1,13 +1,14 @@
 from django.db import models
 from .ProtocolRequest import ProtocolRequest
 from django.db.models.signals import post_save
-from  django.utils import timezone
+from django.utils import timezone
 
-status_list=(
+status_list = (
     ('P', 'Pending'),
     ('A', 'Approved'),
     ('R', 'Rejected')
 )
+
 
 class ProtocolResponse(models.Model):
 
