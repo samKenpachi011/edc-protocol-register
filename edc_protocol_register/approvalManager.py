@@ -46,7 +46,7 @@ class ApproveProtocol:
                                                 response_date=datetime.date.today()
                                                 )
 
-            # create a protocol instance
+            # create a protocol instance once the request has been approved
             Protocol.objects.create(
                 name=protocol_request.name,
                 number=self.assign_protocol_number(),
@@ -70,6 +70,7 @@ class ApproveProtocol:
             messages.success("protocol already approved")
         else:
             try:
+                # update the status field of the request object
                 ProtocolResponse.objects.filter(pk=protocol_response.id).update(status='R')
                 protocol_response.status = "R"
             except ObjectDoesNotExist:

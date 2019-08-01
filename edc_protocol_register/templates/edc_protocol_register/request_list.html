@@ -20,24 +20,33 @@
     </style>
 
     <table class="table table-hover row-clickable">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>pi email</th>
-        </tr>
-    {% for i in ProtocolRequest %}
-            {% if i.request.status == "A" %}
-                <tr style="color:green;">
-            {% elif i.request.status == "R" %}
-                <tr style="color:red;">
-            {%endif%}
-            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.name}}</a></td>
-            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.snippet}}</a></td>
-            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.request.status}}</a></td>
-            <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.pi_email}}</a></td>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>pi email</th>
+                <th>request date</th>
             </tr>
-    {% endfor %}
+        </thead>
+
+        <tbody>
+            {% for i in ProtocolRequest %}
+                {% if i.request.status == "A" %}
+                    <tr style="color:green;">
+                {% elif i.request.status == "R" %}
+                    <tr style="color:red;">
+                {%endif%}
+
+                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.name}}</a></td>
+                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.snippet}}</a></td>
+                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.request.status}}</a></td>
+                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.pi_email}}</a></td>
+                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.request_date}}</a></td>
+                </tr>
+             {% endfor %}
+        </tbody>
+
     </table>
 
 

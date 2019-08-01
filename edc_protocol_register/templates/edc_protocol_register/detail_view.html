@@ -27,39 +27,44 @@
             <td style="color:orange;"> Pending</td>
            {% elif object.request.status == "A" %}
              <td style="color:green;"> Approved</td>
+           {% elif object.request.status == "R" %}
+             <td style="color:red;"> Rejected</td>
            {%endif%}
        </tr>
    </table>
     <br><br>
-     {% if object.request.status == "P" %}
-        <form action="{% url 'approve' object.id %}" method="POST" style="display:inline; ">
-            <button type="submit" class="btn btn-success" ;>Approve</button>
-        </form>
-
-
-    <button type="submit" id="reason" onclick="showDiv()" class="btn btn-danger">Reject</button>
-
-        <div id="welcomeDiv"  style="display:none;" class="answer_list" >
-            <form action="{% url 'reject' object.id %}" method="POST" style=padding-left:20px">
+    {% if perms.edc_protocol_register.can_reject_request %}
+         {% if object.request.status == "P" %}
+            <form action="{% url 'approve' object.id %}" method="POST" style="display:inline; ">
                 {% csrf_token %}
-                <textarea rows="2" cols="20" name="reason" > reason.. </textarea>
-                <button type="submit" class="btn btn-danger">Reject</button>
+                <button type="submit" class="btn btn-success" ;>Approve</button>
             </form>
-        </div>
 
 
+        <button type="submit" id="reason" onclick="showDiv()" class="btn btn-danger">Reject</button>
+
+            <div id="welcomeDiv"  style="display:none;" class="answer_list" >
+                <form action="{% url 'reject' object.id %}" method="POST" style=padding-left:20px">
+                    {% csrf_token %}
+                    <textarea rows="2" cols="20" name="reason" > reason.. </textarea>
+                    <button type="submit" class="btn btn-danger">Reject</button>
+                </form>
+            </div>
+        {% endif %}
     {% endif %}
+
+
     {% if object.request.status == "A" %}
         <p style="color: green">Approved</p>
     {%endif%}
 
 
-{% if messages %}
-    <ul class="messages" style="color:green;">
-    {% for message in messages %}
-        <li {% if message.tags %} class="{{ message.tags }}"{% endif %} > {{ message }}</li>
-    {% endfor %}
-    </ul>
-{% endif %}
+    {% if messages %}
+        <ul class="messages" style="color:green;">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %} > {{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 
 {% endblock main %}
