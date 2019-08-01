@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404
 from edc_base.view_mixins import EdcBaseViewMixin
 from django.views.generic.detail import DetailView
 
-
 class ProtocolRequestDetailView(EdcBaseViewMixin,DetailView):
 
     template_name = 'edc_protocol_register/detail_view.html'
