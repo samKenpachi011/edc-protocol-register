@@ -1,12 +1,12 @@
-from .models import ProtocolRequest
+from edc_protocol_register.models import ProtocolRequest
 import csv
 from django.utils.timezone import datetime
-from .approvalManager import ApproveProtocol
+from edc_protocol_register.approvalManager import ApproveProtocol
 
 ap = ApproveProtocol()
 
-def read_and_create_request():
-    with open("BHP_Studies.csv") as f:
+def read_and_create_request(request):
+    with open("/Users/salahdinzeberga/PycharmProjects/edc-protocol-register/edc_protocol_register/views/BHP_Studies.csv", 'r') as f:
         reader = csv.reader(f)
         for row in reader:
             P_request = ProtocolRequest.objects.create(

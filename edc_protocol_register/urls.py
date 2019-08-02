@@ -21,7 +21,7 @@ from rest_framework import routers
 
 from .views import HomeView,\
     AdministrationView,\
-    RequestView, RequestListView,ProtocolRequestDetailView,approve_request,reject_request
+    RequestView, RequestListView,ProtocolRequestDetailView,approve_request,reject_request,read_and_create_request
 
 
 
@@ -41,5 +41,6 @@ urlpatterns = [
     path('list/', RequestListView.as_view(), name='request_list'),
     path('detail/<int:id>', ProtocolRequestDetailView.as_view(), name='request_detail'),
     path('approve/<int:id>', approve_request, name='approve'),
-    path('reject/<int:id>', reject_request, name='reject')
+    path('reject/<int:id>', reject_request, name='reject'),
+    path('load/', read_and_create_request, name='create')
 ]
