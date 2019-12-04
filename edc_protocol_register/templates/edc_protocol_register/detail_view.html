@@ -9,6 +9,9 @@
         }
     </script>
 
+	<p class="h4">
+		<a href="{% url 'request_list' %}" class="btn btn-default btn-lg"><i class="fa fa-list fa-lg"></i>Existing Protocols</a>
+    </p>
 
    <table class="table">
        <tr>
@@ -19,7 +22,7 @@
            <th>status</th>
        </tr>
        <tr>
-           <td>{{ object.name }}</td>
+           <td>{{ object.name }} Coulson</td>
            <td>{{ object.description }}</td>
            <td>{{ object.email }}</td>
            <td>{{ object.duration }}</td>
@@ -33,6 +36,7 @@
        </tr>
    </table>
     <br><br>
+    {% if request.user.groups.all.0.name == 'approvers' %}
     {% if perms.edc_protocol_register.can_reject_request %}
          {% if object.request.status == "P" %}
             <form action="{% url 'approve' object.id %}" method="POST" style="display:inline; ">
@@ -52,11 +56,7 @@
             </div>
         {% endif %}
     {% endif %}
-
-
-    {% if object.request.status == "A" %}
-        <p style="color: green">Approved</p>
-    {%endif%}
+    {% endif %}
 
 
     {% if messages %}

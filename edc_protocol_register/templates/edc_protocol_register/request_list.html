@@ -1,76 +1,71 @@
 {% extends 'edc_protocol_register/base.html' %}
 {% load staticfiles %}
 
+{% block extra-css %}
+
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" >
+	
+{% endblock extra-css %}
+
+
+<!-- begin extra-scripts by app ================================================== -->
+{% block extra-scripts %}
+	<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+		    $('#example').DataTable();
+		} );
+	</script>
+{% endblock extra-scripts %}
+<!-- end extra-scripts by app ================================================== -->
+
 {% block main %}
-    <style>
-        table.row-clickable tbody tr td {
-        padding: 0;
-        }
 
-        table.row-clickable tbody tr td a {
-            display: block;
+<p class="h4">
+	<a href="{% url 'home_url' %}" class="btn btn-default btn-lg"><i class="fa fa-home fa-lg"></i>Home</a>
+</p>
 
-            padding: 8px;
-        }
-        a.details {
-        text-decoration: none;
-        color: inherit;
-         }
-
-    </style>
-
-    <table class="table table-hover row-clickable">
+<table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Number</th>
                 <th>Description</th>
                 <th>Status</th>
-                <th>pi email</th>
-                <th>request date</th>
+                <th>PI Email</th>
+                <th>Request date</th>
             </tr>
         </thead>
-
         <tbody>
-            {% for i in ProtocolRequest %}
-                {% if i.request.status == "A" %}
+        	{% for protocol in ProtocolRequest %}
+                {% if protocol.request.status == "A" %}
                     <tr style="color:green;">
-                {% elif i.request.status == "R" %}
+                {% elif protocol.request.status == "R" %}
                     <tr style="color:red;">
                 {%endif%}
 
-                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.name}}</a></td>
-                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.snippet}}</a></td>
-                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.request.status}}</a></td>
-                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.pi_email}}</a></td>
-                <td><a href="{% url 'request_detail' id=i.id %}" class="details">{{i.request_date}}</a></td>
+                <td><a href="{% url 'request_detail' id=protocol.id %}" class="details">{{protocol.name}}</a></td>
+                <td>{{protocol.request.response.number}}</td>
+                <td>{{protocol.snippet}}</td>
+                <td>{{protocol.request.status}}</td>
+                <td>{{protocol.pi_email}}</td>
+                <td>{{protocol.request_date}}</td>
                 </tr>
              {% endfor %}
         </tbody>
-
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>PI Email</th>
+                <th>Request date</th>
+            </tr>
+        </tfoot>
     </table>
-
-
-    {% if is_paginated %}
-  <ul class="pagination">
-    {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&laquo;</span></li>
-    {% endif %}
-    {% for i in paginator.page_range %}
-      {% if page_obj.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&raquo;</span></li>
-    {% endif %}
-  </ul>
-{% endif %}
-
 
 {%endblock main%}

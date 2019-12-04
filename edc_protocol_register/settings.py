@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_js_reverse',
     'rest_framework',
     'edc_device.apps.AppConfig',
+    'edc_navbar.apps.AppConfig',
     'edc_protocol_register.apps.EdcBaseAppConfig',
     'edc_protocol_register.apps.AppConfig',
     'crispy_forms',

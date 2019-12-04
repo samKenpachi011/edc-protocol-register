@@ -25,11 +25,3 @@ def validate_protocol_request_date(value):
         raise ValidationError('invalid date.')
     else:
         return value
-
-def validate_duration(value):
-    if value < datetime.date.today():
-        raise ValidationError('invalid duration')
-    else:
-        return str(value)
-# dr ajibola
-

@@ -1,5 +1,4 @@
 from django.db import models
-from ..validators import validate_duration
 
 
 class ProtocolRequest(models.Model):
@@ -42,7 +41,6 @@ class ProtocolRequest(models.Model):
         null=True,
         help_text="study duration",
         blank=True,
-        validators=[validate_duration]
     )
 
     def __str__(self):

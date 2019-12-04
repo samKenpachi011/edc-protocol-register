@@ -17,7 +17,6 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls.conf import path, include
-from rest_framework import routers
 
 from .views import HomeView,\
     AdministrationView,\
