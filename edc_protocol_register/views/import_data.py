@@ -1,7 +1,8 @@
-from edc_protocol_register.models import ProtocolRequest
 import csv
+
 from django.utils.timezone import datetime
-from edc_protocol_register.approvalManager import ApproveProtocol
+from ..approvalManager import ApproveProtocol
+from ..models import ProtocolRequest
 
 ap = ApproveProtocol()
 

@@ -1,10 +1,11 @@
-from django.views.generic import CreateView
-from edc_base.view_mixins import EdcBaseViewMixin
-from ..models import ProtocolRequest
-from ..forms import ProtocolRequestForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils import timezone
+from django.views.generic import CreateView
+
+from ..forms import ProtocolRequestForm
+from ..models import ProtocolRequest
+from .home_view import EdcBaseViewMixin
 
 
 class RequestView(EdcBaseViewMixin, CreateView):
@@ -19,3 +20,6 @@ class RequestView(EdcBaseViewMixin, CreateView):
         self.object.request_date = timezone.now()
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)

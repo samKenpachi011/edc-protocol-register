@@ -22,7 +22,7 @@ from .views import HomeView,\
     AdministrationView,\
     RequestView, RequestListView,ProtocolRequestDetailView,approve_request,reject_request,read_and_create_request
 
-
+app_name = 'edc_protocol_register'
 
 urlpatterns = [
     path('accounts/', include('edc_base.auth.urls')),
@@ -34,6 +34,7 @@ urlpatterns = [
     path('edc_device/', include('edc_device.urls')),
     path('switch_sites/', LogoutView.as_view(next_page=settings.INDEX_PAGE),
          name='switch_sites_url'),
+    path('home/', HomeView.as_view(), name='search_url'),
     path('home/', HomeView.as_view(), name='home_url'),
     path('', HomeView.as_view(), name='home_url'),
     path('apply/', RequestView.as_view(), name='request_url'),

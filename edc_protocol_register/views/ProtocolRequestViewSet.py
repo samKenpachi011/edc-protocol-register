@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from ..models import ProtocolRequest
 from  ..serializers import ProtocolRequestSerializer
+from ..models import ProtocolRequest
 
 class ProtocolRequestViewSet(viewsets.ModelViewSet):
     queryset = ProtocolRequest.objects.all()

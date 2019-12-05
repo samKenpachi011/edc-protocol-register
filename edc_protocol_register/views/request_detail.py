@@ -1,7 +1,8 @@
 from ..models import ProtocolRequest
 from django.shortcuts import get_object_or_404
-from edc_base.view_mixins import EdcBaseViewMixin
 from django.views.generic.detail import DetailView
+from edc_base.view_mixins.edc_base_view_mixin import EdcBaseViewMixin
+
 
 class ProtocolRequestDetailView(EdcBaseViewMixin,DetailView):
 
@@ -11,4 +12,7 @@ class ProtocolRequestDetailView(EdcBaseViewMixin,DetailView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(ProtocolRequest, id=id_)
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 

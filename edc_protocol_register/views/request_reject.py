@@ -1,9 +1,8 @@
-from django.shortcuts import render,redirect,get_object_or_404
-from ..models import ProtocolRequest
-from ..approvalManager import ApproveProtocol
 from django.contrib.auth.decorators import login_required,permission_required
-from ..forms import RejectForm
-import json
+from django.shortcuts import render,redirect,get_object_or_404
+
+from ..approvalManager import ApproveProtocol
+from ..models import ProtocolRequest
 
 
 @login_required
