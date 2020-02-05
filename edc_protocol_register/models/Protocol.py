@@ -1,9 +1,8 @@
 from django.db import models
 from .ProtocolResponse import ProtocolResponse
-from .import ProtocolRequest
 from django.db.models.signals import post_save
-from ..email import send_email
-from ..validators import *
+# from ..email import send_email
+from ..validators import validate_protocol_number
 
 
 class Protocol(models.Model):
