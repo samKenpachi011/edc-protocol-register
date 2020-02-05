@@ -8,9 +8,18 @@ from ..validators import *
 
 class Protocol(models.Model):
 
-    name = models.CharField(
-        verbose_name="protocol name",
-        max_length=50
+    short_name = models.CharField(
+        verbose_name="Protocol short name",
+        max_length=50,
+        null=False,
+        blank=False
+    )
+
+    long_name = models.CharField(
+        verbose_name="Protocol long name",
+        max_length=250,
+        null=False,
+        blank=False
     )
 
     number = models.IntegerField(

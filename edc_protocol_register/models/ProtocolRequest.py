@@ -4,9 +4,16 @@ from django.db import models
 class ProtocolRequest(models.Model):
 
     # email api key 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
-    name = models.CharField(
-        verbose_name="protocol name",
+    short_name = models.CharField(
+        verbose_name="Protocol short name",
         max_length=50,
+        null=False,
+        blank=False
+    )
+
+    long_name = models.CharField(
+        verbose_name="Protocol long name",
+        max_length=250,
         null=False,
         blank=False
     )

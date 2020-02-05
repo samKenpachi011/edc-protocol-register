@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'simple_history',
-    'corsheaders',
     'django_js_reverse',
     'rest_framework',
     'edc_device.apps.AppConfig',
