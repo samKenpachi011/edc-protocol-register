@@ -10,4 +10,4 @@ class ProtocolRequestForm(forms.ModelForm):
 
     class Meta:
         model = ProtocolRequest
-        fields = ['name', 'description', 'email', 'pi_email', 'duration']
+        fields = ['short_name', 'long_name', 'description', 'email', 'pi_email', 'request_date', 'duration']

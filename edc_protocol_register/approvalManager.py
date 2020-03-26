@@ -48,7 +48,8 @@ class ApproveProtocol:
 
             # create a protocol instance once the request has been approved
             Protocol.objects.create(
-                name=protocol_request.name,
+                short_name=protocol_request.short_name,
+                long_name=protocol_request.long_name,
                 number=self.assign_protocol_number(),
                 approval_date=timezone.now(),
                 response=protocol_response

@@ -3,7 +3,6 @@ from ..models import Protocol
 from ..models import ProtocolRequest
 from ..models import ProtocolResponse
 from ..forms import ProtocolRequestForm
-from django.urls import reverse
 from ..approvalManager import ApproveProtocol
 from faker import Faker
 
@@ -13,7 +12,8 @@ ap = ApproveProtocol()
 
 
 def create_request():
-    return ProtocolRequest.objects.create(name="abc",
+    return ProtocolRequest.objects.create(short_name="abc",
+                                          long_name='abc',
                                           description=fake.text(),
                                           email=fake.email(), pi_email=fake.email(),
                                           request_date="2019-02-02",
@@ -23,19 +23,19 @@ def create_request():
 class ProtocolRequestTest(TestCase):
 
     def test_ProtocolRequestForm_valid(self):
-        form = ProtocolRequestForm(data={'name': "qwert", 'description': "sadfasdfasdf", 'email': "salah@gmail.com",
+        form = ProtocolRequestForm(data={'short_name': "qwert", 'long_name':'sadfadfas', 'description': "sadfasdfasdf", 'email': "salah@gmail.com",
                                          'pi_email': "salah@gmail.com", 'request_date': '2019-02-02'})
         self.assertTrue(form.is_valid())
 
     # Invalid Form Data
     def test_ProtocolRequestForm_invalid(self):
-        form = ProtocolRequestForm(data={'name': "", 'description': "sadfasdfasdf", 'email': "salah@gmail.com",
+        form = ProtocolRequestForm(data={'short_name': "", 'long_name':'', 'description': "sadfasdfasdf", 'email': "salah@gmail.com",
                                          'pi_email': "salah@gmail.com", 'request_date': 'A'})
         self.assertFalse(form.is_valid())
 
     # testing email validator
     def test_ProtocolRequestForm_with_invalid_email(self):
-        form = ProtocolRequestForm(data={'name': "qwert", 'description': "sadfasdfasdf", 'pi_email': "salah"})
+        form = ProtocolRequestForm(data={'short_name': "qwert", 'description': "sadfasdfasdf", 'pi_email': "salah"})
         self.assertFalse(form.is_valid())
 
 
@@ -46,7 +46,8 @@ class ProtocolApprovalTest(TestCase):
     # testing if instant of type Protocolresponse is created when a request is made
     def test_request_creation(self):
         options = {
-            'name': 'BCPP',
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
             'description': 'this is a description',
             'email': 'bhcp@gmail.com',
             'pi_email': 'bhcp@gmail.com',
@@ -57,7 +58,8 @@ class ProtocolApprovalTest(TestCase):
 
     def test_response_instance_creation(self):
         options = {
-            'name': 'BCPP',
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
             'description': 'this is a description',
             'email': 'bhcp@gmail.com',
             'pi_email': 'bhcp@gmail.com',
@@ -69,7 +71,8 @@ class ProtocolApprovalTest(TestCase):
 
     def test_protocol_approval(self):
         options = {
-            'name': 'BCPP',
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
             'description': 'this is a description',
             'email': 'bhcp@gmail.com',
             'pi_email': 'bhcp@gmail.com',
@@ -84,7 +87,8 @@ class ProtocolApprovalTest(TestCase):
 
     def test_protocol_rejection(self):
         options = {
-            'name': 'BCPP',
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
             'description': 'this is a description',
             'email': 'bhcp@gmail.com',
             'pi_email': 'bhcp@gmail.com',
@@ -97,7 +101,8 @@ class ProtocolApprovalTest(TestCase):
 
     def test_response_creation(self):
         options = {
-            'name': 'BCPP',
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
             'description': 'this is a description',
             'email': 'bhcp@gmail.com',
             'pi_email': 'bhcp@gmail.com',
