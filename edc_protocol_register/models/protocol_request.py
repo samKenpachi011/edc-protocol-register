@@ -13,7 +13,7 @@ class ProtocolRequest(models.Model):
 
     long_name = models.CharField(
         verbose_name="Protocol long name",
-        max_length=250,
+        max_length=500,
         null=False,
         blank=False
     )
