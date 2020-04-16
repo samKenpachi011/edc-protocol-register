@@ -1,9 +1,8 @@
 from django.db import models
-from .ProtocolRequest import ProtocolRequest
-from django.db.models.signals import post_save
-from django.utils import timezone
+from .protocol_request import ProtocolRequest
 
-status_list = (
+
+STATUS = (
     ('P', 'Pending'),
     ('A', 'Approved'),
     ('R', 'Rejected')
@@ -12,7 +11,7 @@ status_list = (
 
 class ProtocolResponse(models.Model):
 
-    protocolrequest = models.OneToOneField(
+    protocol_request = models.OneToOneField(
         ProtocolRequest,
         on_delete=models.CASCADE,
         related_name="request",
@@ -22,7 +21,7 @@ class ProtocolResponse(models.Model):
     status = models.CharField(
         verbose_name="protocol status",
         max_length=50,
-        choices=status_list,
+        choices=STATUS,
         default="P"
     )
 
@@ -32,11 +31,3 @@ class ProtocolResponse(models.Model):
 
     def __str__(self):
         return self.status
-
-
-def create_response(sender, **kwargs):
-    if kwargs['created']:
-        ProtocolResponse.objects.create(protocolrequest=kwargs['instance'], response_date=timezone.now())
-
-
-post_save.connect(create_response, sender=ProtocolRequest)

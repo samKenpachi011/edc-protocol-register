@@ -1,8 +1,3 @@
-from .ProtocolRequestAdmin import ProtocolRequestAdmin
-from .ProtocolResponseAdmin import ProtocolResponseAdmin
-from .ProtocolAdmin import ProtocolAdmin
-
-
-
-
-
+from .protocol_admin import Protocol
+from .protocol_request_admin import ProtocolRequest
+from .protocol_response_admin import ProtocolResponse

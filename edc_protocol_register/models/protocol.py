@@ -1,11 +1,16 @@
 from django.db import models
-from .ProtocolResponse import ProtocolResponse
-from django.db.models.signals import post_save
-# from ..email import send_email
+
+from .protocol_response import ProtocolResponse
 from ..validators import validate_protocol_number
 
 
 class Protocol(models.Model):
+
+    protocol_response = models.OneToOneField(
+        ProtocolResponse,
+        on_delete=models.CASCADE,
+        related_name="response",
+    )
 
     short_name = models.CharField(
         verbose_name="Protocol short name",
@@ -32,19 +37,3 @@ class Protocol(models.Model):
         verbose_name="date of approval",
         null=False,
     )
-
-    response = models.OneToOneField(
-        ProtocolResponse,
-        on_delete=models.CASCADE,
-        related_name="response",
-    )
-
-def sendemail(sender,**kwargs):
-    if kwargs['created']:
-        protocol_response_instance = kwargs['instance'].response
-        protocol_request_instance = protocol_response_instance.protocolrequest
-        #send_email(protocol_request_instance.pi_email, response=True, approved=True)
-
-
-post_save.connect(sendemail, sender=Protocol)
-

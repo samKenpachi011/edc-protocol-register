@@ -1,7 +1,9 @@
-from ..models import ProtocolRequest
 from django.shortcuts import get_object_or_404
 from django.views.generic.detail import DetailView
+
 from edc_base.view_mixins.edc_base_view_mixin import EdcBaseViewMixin
+
+from ..models import ProtocolRequest
 
 
 class ProtocolRequestDetailView(EdcBaseViewMixin,DetailView):

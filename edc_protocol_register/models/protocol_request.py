@@ -1,9 +1,9 @@
 from django.db import models
+from django.utils import timezone
 
 
 class ProtocolRequest(models.Model):
 
-    # email api key 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
     short_name = models.CharField(
         verbose_name="Protocol short name",
         max_length=50,
@@ -40,7 +40,8 @@ class ProtocolRequest(models.Model):
     )
 
     request_date = models.DateTimeField(
-        verbose_name="requested date"
+        verbose_name="requested date",
+        default=timezone.now
     )
 
     duration = models.DurationField(
@@ -51,7 +52,7 @@ class ProtocolRequest(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.short_name
 
     def snippet(self):
         return self.description[:20] + " ..."

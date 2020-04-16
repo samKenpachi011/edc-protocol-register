@@ -1,8 +1,8 @@
 import csv
-
 from django.utils.timezone import datetime
-from ..approvalManager import ApproveProtocol
+
 from ..models import ProtocolRequest
+from ..approve_protocol import ApproveProtocol
 
 ap = ApproveProtocol()
 

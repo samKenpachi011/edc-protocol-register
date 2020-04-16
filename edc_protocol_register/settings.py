@@ -140,9 +140,9 @@ PARENT_REFERENCE_MODEL1 = ''
 PARENT_REFERENCE_MODEL2 = ''
 
 
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_PORT = 587
-EMAIL_HOST_USER="postmaster@sandboxceec9532622a40f297ed91245b14cb8c.mailgun.org"
-EMAIL_HOST_PASSWORD="8b0d022844144634e8624a41c0410f93-afab6073-9031cfee"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
+EMAIL_PORT = 0
+EMAIL_HOST_USER = 'bhp.se.dmc@gmail.com'
+EMAIL_HOST_PASSWORD = 'dmccc3721broot'

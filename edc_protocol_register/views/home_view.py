@@ -3,7 +3,10 @@ from django.conf import settings
 from django.contrib import messages
 from django.views.generic import TemplateView
 from django.views.generic.base import ContextMixin
+
 from django_revision.views import RevisionMixin
+
+from edc_navbar import NavbarViewMixin
 
 
 class EdcBaseViewMixin(RevisionMixin, ContextMixin):
@@ -39,9 +42,11 @@ class EdcBaseViewMixin(RevisionMixin, ContextMixin):
         return context
 
 
-class HomeView(EdcBaseViewMixin, TemplateView):
+class HomeView(EdcBaseViewMixin, NavbarViewMixin, TemplateView):
 
     template_name = 'edc_protocol_register/home.html'
+    navbar_name = 'protocols'
+    navbar_selected_item = 'home'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

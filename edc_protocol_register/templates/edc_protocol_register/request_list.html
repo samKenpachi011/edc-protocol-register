@@ -33,7 +33,7 @@
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Short Name</th>
                 <th>Number</th>
                 <th>Description</th>
                 <th>Status</th>
@@ -42,14 +42,14 @@
             </tr>
         </thead>
         <tbody>
-        	{% for protocol in ProtocolRequest %}
+        	{% for protocol in protocol_request %}
                 {% if protocol.request.status == "A" %}
                     <tr style="color:green;">
                 {% elif protocol.request.status == "R" %}
                     <tr style="color:red;">
                 {%endif%}
 
-                <td><a href="{% url 'request_detail' id=protocol.id %}" class="details">{{protocol.name}}</a></td>
+                <td><a href="{% url 'request_detail' id=protocol.id %}" class="details">{{protocol.short_name}}</a></td>
                 <td>{{protocol.request.response.number}}</td>
                 <td>{{protocol.snippet}}</td>
                 <td>{{protocol.request.status}}</td>

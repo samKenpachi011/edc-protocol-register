@@ -2,7 +2,7 @@ from django.apps import AppConfig as DjangoAppConfig
 from edc_base.apps import AppConfig as BaseEdcBaseAppConfig
 from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
-#from .models import Protocol,ProtocolResponse,ProtocolRequest
+#from .models import protocol,protocol_response,protocol_request
 
 
 
@@ -10,13 +10,12 @@ class AppConfig(DjangoAppConfig):
     name = 'edc_protocol_register'
 
     def ready(self):
-        from .models import Protocol
-        from .models import ProtocolResponse
-        from .models import ProtocolRequest
+        from .models import protocol_request_on_post_save
+        from .models import protocol_response_on_post_save
 
 
 class EdcBaseAppConfig(BaseEdcBaseAppConfig):
-    project_name = 'Protocol Register'
+    project_name = 'protocol Register'
     institution = 'Botswana-Harvard AIDS Institute'
 
 
