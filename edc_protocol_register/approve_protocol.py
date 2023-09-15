@@ -78,7 +78,7 @@ class ApproveProtocol:
             rejected = True
             message = f"Your request for a protocol number for the project " \
                 f"{protocol_response.protocol_request.long_name}has been rejected and " \
-                    f"you protocol number is: {self.protocol_number}. Please contact the Data management center"
+                f"you protocol number is: {self.protocol_number}. Please contact the Data management center"
             subject = f"Protocol request for {protocol_response.protocol_request.short_name}"
             try:
                 Protocol.objects.get(
