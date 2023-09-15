@@ -1,13 +1,12 @@
 from django.conf import settings
-from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.utils import timezone
 
-from .models import Protocol, ProtocolResponse
+from .models import Protocol
 
 
 class ApproveProtocol:
-    
+
     def email_notification(self, message=None, subject=None, to_emails=[]):
         send_mail(
             subject,
@@ -77,7 +76,8 @@ class ApproveProtocol:
             message = f"Your request for a protocol number for the project {protocol_response.protocol_request.long_name}has been rejected and you protocol number is: {protocol_number}. Please contact the Data management center"
             subject = f"Protocol request for {protocol_response.protocol_request.short_name}"
             try:
-                Protocol.objects.get(protocol_response=protocol_response).delete()
+                Protocol.objects.get(
+                    protocol_response=protocol_response).delete()
             except Protocol.DoesNotExist:
                 pass
             emails = [

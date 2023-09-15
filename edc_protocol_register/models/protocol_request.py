@@ -63,4 +63,3 @@ class ProtocolRequest(models.Model):
             ('can_approve_request', "user can approve request"),
             ('can_reject_request', "user can reject request")
         ]
-

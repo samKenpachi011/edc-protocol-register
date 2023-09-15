@@ -9,3 +9,6 @@ exclude =
   */wsgig.py
   */migrations/*
   */tests/*
+
+per_file_ignores =
+    edc_protocol_register/views/import_data.py:E501

@@ -6,10 +6,8 @@ from django.utils import timezone
 from ...models import ProtocolRequest, ProtocolResponse, Protocol
 
 
-
 class ProtocolError(Exception):
     pass
-
 
 
 class Command(BaseCommand):
@@ -25,8 +23,6 @@ class Command(BaseCommand):
             for row in csv_reader:
                 lines.append(row)
         return lines
-            
-                
 
     def handle(self, *args, **options):
         fpath = options['file_path']
@@ -49,7 +45,8 @@ class Command(BaseCommand):
                 number = invalid_protocol_numbers
                 invalid_protocol_numbers += -1
             try:
-                ProtocolRequest.objects.get(short_name=short_name, long_name=long_name)
+                ProtocolRequest.objects.get(
+                    short_name=short_name, long_name=long_name)
             except ProtocolRequest.DoesNotExist:
                 protocol_request = ProtocolRequest(
                     short_name=short_name,
@@ -57,7 +54,8 @@ class Command(BaseCommand):
                     description=description)
                 protocol_request.save_base(raw=True)
                 try:
-                    ProtocolResponse.objects.get(protocol_request=protocol_request)
+                    ProtocolResponse.objects.get(
+                        protocol_request=protocol_request)
                 except ProtocolResponse.DoesNotExist:
                     protocol_response = ProtocolResponse(
                         protocol_request=protocol_request,
@@ -73,6 +71,8 @@ class Command(BaseCommand):
                             number=number,
                             approval_date=timezone.now(),
                             protocol_response=protocol_response)
-                        self.stdout.write(self.style.SUCCESS(f'Protocol {short_name} has been successfully created'))
+                        self.stdout.write(self.style.SUCCESS(
+                            f'Protocol {short_name} has been successfully created'))
                         protocols_created += 1
-        self.stdout.write(self.style.SUCCESS(f'Successfully created {protocols_created} protocols'))
+        self.stdout.write(self.style.SUCCESS(
+            f'Successfully created {protocols_created} protocols'))

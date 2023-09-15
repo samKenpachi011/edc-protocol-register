@@ -6,6 +6,7 @@ from ..approve_protocol import ApproveProtocol
 
 ap = ApproveProtocol()
 
+
 def read_and_create_request(request):
     with open("/Users/salahdinzeberga/PycharmProjects/edc-protocol-register/edc_protocol_register/views/BHP_Studies.csv", 'r') as f:
         reader = csv.reader(f)
@@ -19,4 +20,3 @@ def read_and_create_request(request):
             )
 
             ap.approve(P_request)
-

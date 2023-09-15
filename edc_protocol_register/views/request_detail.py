@@ -6,7 +6,7 @@ from edc_base.view_mixins.edc_base_view_mixin import EdcBaseViewMixin
 from ..models import ProtocolRequest
 
 
-class ProtocolRequestDetailView(EdcBaseViewMixin,DetailView):
+class ProtocolRequestDetailView(EdcBaseViewMixin, DetailView):
 
     template_name = 'edc_protocol_register/detail_view.html'
     queryset = ProtocolRequest.objects.all()
@@ -17,4 +17,3 @@ class ProtocolRequestDetailView(EdcBaseViewMixin,DetailView):
 
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
-

@@ -25,7 +25,7 @@ class ProtocolResponse(models.Model):
         default="P"
     )
 
-    response_date=models.DateField(
+    response_date = models.DateField(
         verbose_name="date of response",
     )
 

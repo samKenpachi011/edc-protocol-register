@@ -2,7 +2,6 @@ from django.apps import AppConfig as DjangoAppConfig
 from edc_base.apps import AppConfig as BaseEdcBaseAppConfig
 from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
-#from .models import protocol,protocol_response,protocol_request
 
 
 class AppConfig(DjangoAppConfig):
