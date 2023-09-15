@@ -1,7 +1,7 @@
 from django.test import TestCase
-# from edc_protocol_register.models import Protocol
+from edc_protocol_register.models import Protocol
 from edc_protocol_register.models import ProtocolRequest
-# from edc_protocol_register.models import ProtocolResponse
+from edc_protocol_register.models import ProtocolResponse
 from edc_protocol_register.forms import ProtocolRequestForm
 from edc_protocol_register.approve_protocol import ApproveProtocol
 from faker import Faker
@@ -53,87 +53,88 @@ class ProtocolRequestTest(TestCase):
         self.assertFalse(form.is_valid())
 
 
-# class ProtocolApprovalTest(TestCase):
+class ProtocolApprovalTest(TestCase):
 
-#     # creating a protocol request object
+    # creating a protocol request object
 
-#     # testing if instant of type Protocolresponse is created when a request is made
-#     def test_request_creation(self):
-#         options = {
-#             'short_name': 'BCPP',
-#             'long_name': 'Botswana Combination Prevension Project',
-#             'description': 'this is a description',
-#             'email': 'bhcp@gmail.com',
-#             'pi_email': 'bhcp@gmail.com',
-#             'request_date': '2019-02-02'
-#         }
+    # testing if instant of type Protocolresponse is
+    # created when a request is made
+    def test_request_creation(self):
+        options = {
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
+            'description': 'this is a description',
+            'email': 'bhcp@gmail.com',
+            'pi_email': 'bhcp@gmail.com',
+            'request_date': '2019-02-02'
+        }
 
-#         protocol_request.objects.create(**options)
-#         self.assertEqual(protocol_response.objects.all().count(), 1)
+        ProtocolRequest.objects.create(**options)
+        self.assertEqual(ProtocolRequest.objects.all().count(), 1)
 
-#     def test_response_instance_creation(self):
-#         options = {
-#             'short_name': 'BCPP',
-#             'long_name': 'Botswana Combination Prevension Project',
-#             'description': 'this is a description',
-#             'email': 'bhcp@gmail.com',
-#             'pi_email': 'bhcp@gmail.com',
-#             'request_date': '2019-02-02'
-#         }
-#         protocol_request = protocol_request.objects.create(**options)
-#         self.assertTrue(isinstance(protocol_request.request, protocol_response))
+    def test_response_instance_creation(self):
+        options = {
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
+            'description': 'this is a description',
+            'email': 'bhcp@gmail.com',
+            'pi_email': 'bhcp@gmail.com',
+            'request_date': '2019-02-02'
+        }
+        protocol_request = ProtocolRequest.objects.create(**options)
+        self.assertTrue(isinstance(protocol_request.request, ProtocolResponse))
 
+    def test_protocol_approval(self):
+        options = {
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
+            'description': 'this is a description',
+            'email': 'bhcp@gmail.com',
+            'pi_email': 'bhcp@gmail.com',
+            'request_date': '2019-02-02'
+        }
+        protocol_request = ProtocolRequest.objects.create(**options)
+        ap.approve(protocol_request)
+        protocol_response = ProtocolRequest.request
+        self.assertEqual(protocol_response.status, "A")
+        # test if a protocol instance has been created
+        self.assertTrue(isinstance(protocol_response.response, Protocol))
 
-#     def test_protocol_approval(self):
-#         options = {
-#             'short_name': 'BCPP',
-#             'long_name': 'Botswana Combination Prevension Project',
-#             'description': 'this is a description',
-#             'email': 'bhcp@gmail.com',
-#             'pi_email': 'bhcp@gmail.com',
-#             'request_date': '2019-02-02'
-#         }
-#         protocol_request = protocol_request.objects.create(**options)
-#         ap.approve(protocol_request)
-#         protocol_response = protocol_request.request
-#         self.assertEqual(protocol_response.status, "A")
-#         # test if a protocol instance has been created
-#         self.assertTrue(isinstance(protocol_response.response, protocol))
+    def test_protocol_rejection(self):
+        options = {
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
+            'description': 'this is a description',
+            'email': 'bhcp@gmail.com',
+            'pi_email': 'bhcp@gmail.com',
+            'request_date': '2019-02-02'
+        }
+        protocol_request = ProtocolRequest.objects.create(**options)
+        ap.reject(protocol_request)
+        protocol_response = protocol_request.request
+        self.assertEqual(protocol_response.status, "R")
 
-#     def test_protocol_rejection(self):
-#         options = {
-#             'short_name': 'BCPP',
-#             'long_name': 'Botswana Combination Prevension Project',
-#             'description': 'this is a description',
-#             'email': 'bhcp@gmail.com',
-#             'pi_email': 'bhcp@gmail.com',
-#             'request_date': '2019-02-02'
-#         }
-#         protocol_request = protocol_request.objects.create(**options)
-#         ap.reject(protocol_request)
-#         protocol_response = protocol_request.request
-#         self.assertEqual(protocol_response.status, "R")
+    def test_response_creation(self):
+        options = {
+            'short_name': 'BCPP',
+            'long_name': 'Botswana Combination Prevension Project',
+            'description': 'this is a description',
+            'email': 'bhcp@gmail.com',
+            'pi_email': 'bhcp@gmail.com',
+            'request_date': '2019-02-02'
+        }
+        protocol_request = ProtocolRequest.objects.create(**options)
+        response = protocol_request.request
+        self.assertTrue(response.status, "P")
 
-#     def test_response_creation(self):
-#         options = {
-#             'short_name': 'BCPP',
-#             'long_name': 'Botswana Combination Prevension Project',
-#             'description': 'this is a description',
-#             'email': 'bhcp@gmail.com',
-#             'pi_email': 'bhcp@gmail.com',
-#             'request_date': '2019-02-02'
-#         }
-#         protocol_request = protocol_request.objects.create(**options)
-#         response = protocol_request.request
-#         self.assertTrue(response.status, "P")
+    # testing if all the protocol instances are approved
+    def test_request_approval(self):
+        [self.assertEqual(x.response.status, "A")
+         for x in Protocol.objects.all()]
 
-#     # testing if all the protocol instances are approved
-#     def test_request_approval(self):
-#         [self.assertEqual(x.response.status, "A") for x in protocol.objects.all()]
-
-#     def test_duplicate_protocol_number(self):
-#         no_dup = set()
-#         a = protocol.objects.all()
-#         for i in a:
-#             no_dup.add(i.number)
-#         self.assertEqual(len(no_dup), len(a))
+    def test_duplicate_protocol_number(self):
+        no_dup = set()
+        a = Protocol.objects.all()
+        for i in a:
+            no_dup.add(i.number)
+        self.assertEqual(len(no_dup), len(a))
