@@ -5,8 +5,8 @@ max-line-length = 120
 exclude =
   __pycache__,
   settings.py,
-  manage.py
-  import_data.py
-  */wsgig.py
-  */migrations/*
+  manage.py,
+  import_data.py,
+  */wsgig.py,
+  */migrations/*,
   */tests/*
