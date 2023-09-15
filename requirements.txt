@@ -3,3 +3,4 @@ git+https://github.com/botswana-harvard/edc-device.git@develop#egg=edc_device
 git+https://github.com/botswana-harvard/edc-protocol.git@develop#egg=edc_protocol
 git+https://github.com/botswana-harvard/django-revision.git@develop#egg=django_revision
 git+https://github.com/botswana-harvard/edc-navbar.git@develop#egg=edc_navbar
+djangorestframework>=3.12.4,<3.13
