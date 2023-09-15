@@ -8,7 +8,10 @@ ap = ApproveProtocol()
 
 
 def read_and_create_request(request):
-    with open("/Users/salahdinzeberga/PycharmProjects/edc-protocol-register/edc_protocol_register/views/BHP_Studies.csv", 'r') as f:
+    file_path = ("/Users/salahdinzeberga/PycharmProjects/"
+                 "edc-protocol-register/edc_protocol_register/"
+                 "views/BHP_Studies.csv")
+    with open(file_path, 'r') as f:
         reader = csv.reader(f)
         for row in reader:
             P_request = ProtocolRequest.objects.create(
