@@ -7,4 +7,3 @@ class ProtocolRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = protocol_request
         fields = '__all__'
-

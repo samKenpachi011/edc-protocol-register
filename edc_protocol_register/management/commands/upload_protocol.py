@@ -32,7 +32,7 @@ class Command(BaseCommand):
         invalid_protocol_numbers = -1
         protocols_created = 0
         for pl in protocols_data:
-            number, short_name, long_name, description,  _ = pl
+            number, short_name, long_name, description, _ = pl
             if number:
                 try:
                     number = int(number)
