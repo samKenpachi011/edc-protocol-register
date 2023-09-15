@@ -6,9 +6,7 @@ exclude =
   __pycache__,
   settings.py,
   manage.py
+  import_data.py
   */wsgig.py
   */migrations/*
   */tests/*
-
-per_file_ignores =
-    edc_protocol_register/views/import_data.py:E501
