@@ -55,7 +55,8 @@ class ApproveProtocol:
                     f"project {protocol_response.protocol_request.long_name} has " \
                     f"been apporved and you protocol number is: {self.protocol_number}"
 
-                subject = f"Protocol request for {protocol_response.protocol_request.short_name}"
+                subject = "Protocol request for " \
+                    f"{protocol_response.protocol_request.short_name}"
                 emails = [
                     protocol_response.protocol_request.pi_email,
                     protocol_response.protocol_request.email]
@@ -76,10 +77,13 @@ class ApproveProtocol:
         rejected = False
         if protocol_response.status == "R":
             rejected = True
-            message = f"Your request for a protocol number for the project " \
-                f"{protocol_response.protocol_request.long_name}has been rejected and " \
-                f"you protocol number is: {self.protocol_number}. Please contact the Data management center"
-            subject = f"Protocol request for {protocol_response.protocol_request.short_name}"
+            message = "Your request for a protocol number for the project " \
+                f"{protocol_response.protocol_request.long_name} " \
+                "has been rejected and " \
+                f"you protocol number is: {self.protocol_number}. " \
+                "Please contact the Data management center"
+            subject = f"Protocol request for" \
+                f"{protocol_response.protocol_request.short_name}"
             try:
                 Protocol.objects.get(
                     protocol_response=protocol_response).delete()

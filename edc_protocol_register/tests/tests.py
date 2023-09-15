@@ -18,7 +18,7 @@ def create_request():
         description=fake.text(),
         email=fake.email(), pi_email=fake.email(),
         request_date="2019-02-02",
-        )
+    )
 
 
 class ProtocolRequestTest(TestCase):

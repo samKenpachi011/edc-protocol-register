@@ -19,9 +19,10 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls.conf import path, include
 
-from .views import HomeView,\
-    AdministrationView,\
-    RequestView, RequestListView, ProtocolRequestDetailView, approve_request, reject_request, read_and_create_request
+from .views import (
+    HomeView, AdministrationView, RequestView, RequestListView,
+    ProtocolRequestDetailView, approve_request,
+    reject_request, read_and_create_request)
 
 from .admin_site import edc_protocol_register_admin
 

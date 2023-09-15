@@ -3,10 +3,9 @@
 max-line-length = 120
 
 exclude =
+  migrations,
+  tests,
   __pycache__,
-  settings.py,
   manage.py,
-  import_data.py,
-  */wsgig.py,
-  */migrations/*,
-  */tests/*
+  settings.py,
+  __init__.py,
