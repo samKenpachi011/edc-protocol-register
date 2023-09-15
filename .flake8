@@ -8,4 +8,4 @@ exclude =
   manage.py
   */wsgig.py
   */migrations/*
-  tests
+  */tests/*
