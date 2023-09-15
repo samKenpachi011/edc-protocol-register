@@ -8,6 +8,7 @@ django-crispy-forms
 django-extensions
 django-simple-history
 django-js-reverse
+flake8 >= 3.0.0
 
 # djangorestframework>=3.12.4,<3.13
 # django-crispy-forms==2.0
