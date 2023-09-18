@@ -1,6 +1,6 @@
 from django.db import models
 from .protocol_request import ProtocolRequest
-
+from edc_base.utils import get_utcnow
 
 STATUS = (
     ('P', 'Pending'),
@@ -27,7 +27,7 @@ class ProtocolResponse(models.Model):
 
     response_date = models.DateField(
         verbose_name="date of response",
-        null=True
+        default=get_utcnow,
     )
 
     def __str__(self):
