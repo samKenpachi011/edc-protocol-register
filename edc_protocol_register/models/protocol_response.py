@@ -27,6 +27,7 @@ class ProtocolResponse(models.Model):
 
     response_date = models.DateField(
         verbose_name="date of response",
+        null=True
     )
 
     def __str__(self):

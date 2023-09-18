@@ -70,7 +70,7 @@ class ProtocolApprovalTest(TestCase):
         }
 
         ProtocolRequest.objects.create(**options)
-        self.assertEqual(ProtocolRequest.objects.all().count(), 1)
+        self.assertEqual(ProtocolResponse.objects.all().count(), 1)
 
     def test_response_instance_creation(self):
         options = {
