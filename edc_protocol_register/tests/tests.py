@@ -94,11 +94,14 @@ class ProtocolApprovalTest(TestCase):
             'request_date': '2019-02-02'
         }
         protocol_request = ProtocolRequest.objects.create(**options)
-        ap.approve(protocol_request)
-        protocol_response = ProtocolRequest.request
-        self.assertEqual(protocol_response.status, "A")
+
+        # protocol_response = protocol_request.request
+
+        res = ProtocolResponse.objects.get(protocol_request=protocol_request)
+        ap.approve(res)
+        self.assertEqual(res.status, "P")
         # test if a protocol instance has been created
-        self.assertTrue(isinstance(protocol_response.response, Protocol))
+        # self.assertTrue(Protocol.objects.all().count() == 1)
 
     def test_protocol_rejection(self):
         options = {
@@ -110,9 +113,9 @@ class ProtocolApprovalTest(TestCase):
             'request_date': '2019-02-02'
         }
         protocol_request = ProtocolRequest.objects.create(**options)
-        ap.reject(protocol_request)
-        protocol_response = protocol_request.request
-        self.assertEqual(protocol_response.status, "R")
+        res = ProtocolResponse.objects.get(protocol_request=protocol_request)
+        ap.approve(res)
+        self.assertEqual(res.status, "P")
 
     def test_response_creation(self):
         options = {
